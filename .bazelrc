@@ -12,3 +12,57 @@ build --define=use_fast_cpp_protos=true
 # This is currently disabled because TensorFlow does not support bzlmod,
 # hence Riegeli/TensorFlow bindings are broken anyway.
 # import %workspace%/configure.bazelrc
+
+
+
+## .bazelrc
+#
+## ----------------------------
+## Python Configuration
+## ----------------------------
+#
+## Specify the Python binary path
+#build --python_path=/Users/fred/code/monarch/venv/bin/python3
+#
+## Pass Python environment variables to Bazel
+#build --action_env=PYTHON_BIN_PATH=/Users/fred/code/monarch/venv/bin/python3
+#build --action_env=PYTHON_LIB_PATH=/opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/lib
+#build --action_env=PYTHON_INCLUDE_PATH=/opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/include/python3.12
+#
+## ----------------------------
+## C++ Compiler Configuration
+## ----------------------------
+#
+## Set the C++ standard to C++17
+#build --cxxopt=-std=c++17
+#
+## ----------------------------
+## Linker Configuration
+## ----------------------------
+#
+## Link against the Python library
+build --linkopt=-L/opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/lib
+build --linkopt=-lpython3.12
+#
+## Set the library search path
+#build --action_env=LD_LIBRARY_PATH=/opt/homebrew/opt/python@3.12/Frameworks/Python.framework/Versions/3.12/lib
+#
+## For protoc
+##build --action_env=LDFLAGS=-L/opt/homebrew/opt/protobuf@3/lib
+##build --action_env=CPPFLAGS=-I/opt/homebrew/opt/protobuf@3/include
+#
+## ----------------------------
+## Abseil-C++ Version Override
+## ----------------------------
+#
+## Handle abseil-cpp version mismatch by overriding the repository
+## Ensure you have the correct version of abseil-cpp available locally
+## Replace '/path/to/abseil-cpp@20230802.1' with the actual path
+##build --override_repository=com_google_absl=/path/to/abseil-cpp@20230802.1
+#
+## ----------------------------
+## Build Verbosity
+## ----------------------------
+#
+## Enable verbose failures for better debugging
+#build --verbose_failures
