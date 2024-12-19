@@ -1,0 +1,5 @@
+/venv/
+/MODULE.bazel.lock
+/python/build/
+/python/dist/
+/python/riegeli.egg-info/
